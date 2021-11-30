@@ -28,7 +28,7 @@
                         </template>
 
                         <template #body>
-                            <Row v-for="d in departments" :key="d.id">
+                            <Row v-for="d in departments.data" :key="d.id">
                                 <Cell>{{ d.name }}</Cell>
                                 <Cell>{{ d.email }}</Cell>
                                 <Cell>{{ d.phone }}</Cell>
@@ -36,9 +36,12 @@
                             </Row>
                         </template>
                     </Table>
+
+                    <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
+                        <Pagination :links="departments.links" />
+                    </div>
                 </div>
             </div>
-
         </div>
     </BreezeAuthenticatedLayout>
 </template>
@@ -50,11 +53,13 @@ import Table from "@/Components/Table/Table";
 import Heading from "@/Components/Table/Heading";
 import Row from "@/Components/Table/Row";
 import Cell from "@/Components/Table/Cell";
+import Pagination from "@/Components/Pagination";
 import AnchorLink from "@/Components/AnchorLink";
 
 export default {
     components: {
         AnchorLink,
+        Pagination,
         Cell,
         Row,
         Heading,
