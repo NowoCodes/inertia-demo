@@ -20,7 +20,7 @@
                                 </BreezeNavLink>
 
                                 <BreezeNavLink :href="route('departments.index')" :active="route().current('departments.index')">
-                                    Dashboard
+                                    Departments
                                 </BreezeNavLink>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
             </header>
 
             <!-- Page Content -->
-            <main>
+            <main class="bg-gray-400">
                 <slot />
             </main>
         </div>

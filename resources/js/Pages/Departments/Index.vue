@@ -1,5 +1,5 @@
 <template>
-    <Head title="Dashboard" />
+    <Head title="Departments" />
 
     <BreezeAuthenticatedLayout>
         <template #header>
@@ -10,12 +10,27 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        {{ departments }}
-                    </div>
+                <div class="inline-block overflow-hidden min-w-full rounded-lg shadow mt-12">
+                    <Table>
+                        <template #head>
+                            <Heading>Name</Heading>
+                            <Heading>Email</Heading>
+                            <Heading>Phone</Heading>
+                            <Heading>Actions</Heading>
+                        </template>
+
+                        <template #body>
+                            <Row v-for="d in departments" :key="d.id">
+                                <Cell>{{ d.name }}</Cell>
+                                <Cell>{{ d.email }}</Cell>
+                                <Cell>{{ d.phone }}</Cell>
+                                <Cell></Cell>
+                            </Row>
+                        </template>
+                    </Table>
                 </div>
             </div>
+
         </div>
     </BreezeAuthenticatedLayout>
 </template>
@@ -23,9 +38,17 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 import { Head } from '@inertiajs/inertia-vue3';
+import Table from "@/Components/Table/Table";
+import Heading from "@/Components/Table/Heading";
+import Row from "@/Components/Table/Row";
+import Cell from "@/Components/Table/Cell";
 
 export default {
     components: {
+        Cell,
+        Row,
+        Heading,
+        Table,
         BreezeAuthenticatedLayout,
         Head,
     },
