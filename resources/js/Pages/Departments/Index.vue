@@ -10,7 +10,15 @@
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="inline-block overflow-hidden min-w-full rounded-lg shadow mt-12">
+
+                <div class="lg:w-3/3 flex justify-end">
+                    <AnchorLink :href="route('departments.create')"
+                                mode="add">
+                        Create Department
+                    </AnchorLink>
+                </div>
+
+                <div class="inline-block overflow-hidden min-w-full rounded-lg shadow mt-8">
                     <Table>
                         <template #head>
                             <Heading>Name</Heading>
@@ -42,9 +50,11 @@ import Table from "@/Components/Table/Table";
 import Heading from "@/Components/Table/Heading";
 import Row from "@/Components/Table/Row";
 import Cell from "@/Components/Table/Cell";
+import AnchorLink from "@/Components/AnchorLink";
 
 export default {
     components: {
+        AnchorLink,
         Cell,
         Row,
         Heading,
