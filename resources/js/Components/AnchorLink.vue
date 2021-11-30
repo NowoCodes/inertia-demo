@@ -37,7 +37,7 @@ export default {
             if (this.mode === 'view') {
                 return 'bg-green-600 hover:bg-green-800'
             }
-            return '';
+            return 'bg-indigo-600 hover:bg-indigo-800';
         }
     }
 }
