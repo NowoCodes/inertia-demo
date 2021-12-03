@@ -22,7 +22,8 @@
                             <!--                        name -->
                             <div class="mb-4">
                                 <Label for="name" value="Name"></Label>
-                                <Input id="name" v-model="form.name" autofocus class="mt-1 block w-1/2" required
+                                <Input id="name" v-model="form.name" :error="form.errors.name" autofocus
+                                       class="mt-1 block w-1/2" required
                                        type="text"></Input>
                                 <InputError :message="form.errors.name"></InputError>
                             </div>
@@ -30,20 +31,22 @@
                             <!--                        email-->
                             <div class="mb-4">
                                 <Label for="email" value="Email"></Label>
-                                <Input id="email" v-model="form.email" class="mt-1 block w-1/2" type="email"></Input>
+                                <Input id="email" v-model="form.email" :error="form.errors.email"
+                                       class="mt-1 block w-1/2" type="email"></Input>
                                 <InputError :message="form.errors.email"></InputError>
                             </div>
 
                             <!--                        phone-->
                             <div class="mb-4">
                                 <Label for="phone" value="Phone"></Label>
-                                <Input id="phone" v-model="form.phone" class="mt-1 block w-1/2" type="text"></Input>
+                                <Input id="phone" v-model="form.phone" :error="form.errors.phone"
+                                       class="mt-1 block w-1/2" type="text"></Input>
                                 <InputError :message="form.errors.phone"></InputError>
                             </div>
 
                             <!--                        submit-->
                             <div class="flex justify-end">
-                                <Button :disabled="form.processing">Create</Button>
+                                <Button :loading="form.processing">Create</Button>
                             </div>
                         </form>
                     </div>
