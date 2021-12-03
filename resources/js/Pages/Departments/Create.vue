@@ -13,7 +13,7 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
                         <div v-show="form.hasErrors">
-                            <div class="text-red-600 font-medium">
+                            <div class="text-red-600 font-medium mb-4">
                                 Please make the following corrections:
                             </div>
                         </div>
@@ -45,7 +45,8 @@
                             </div>
 
                             <!--                        submit-->
-                            <div class="flex justify-end">
+                            <div class="flex justify-end gap-2">
+                                <ResetButton @click="resetForm">Reset</ResetButton>
                                 <Button :loading="form.processing">Create</Button>
                             </div>
                         </form>
@@ -65,9 +66,11 @@ import Label from "@/Components/Label";
 import Input from "@/Components/Input";
 import InputError from "@/Components/InputError";
 import Button from "@/Components/Button";
+import ResetButton from "@/Components/ResetButton";
 
 export default {
     components: {
+        ResetButton,
         Button,
         InputError,
         Input,
@@ -89,6 +92,10 @@ export default {
     methods: {
         submit() {
             this.form.post(route('departments.store'));
+        },
+        resetForm() {
+            this.form.clearErrors();
+            this.form.reset();
         },
     }
 }
