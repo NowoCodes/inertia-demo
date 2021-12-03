@@ -32,9 +32,11 @@
                                 <Cell>{{ d.email }}</Cell>
                                 <Cell>{{ d.phone }}</Cell>
                                 <Cell>
-                                    <Link :href="route('departments.edit', d.id)">Edit</Link>
                                     <AnchorLink :href="route('departments.edit', d.id)" mode="edit">
                                         Edit
+                                    </AnchorLink>
+                                    <AnchorLink class="ml-3" mode="delete" @click="destroy(d.id)">
+                                        Delete
                                     </AnchorLink>
                                 </Cell>
                             </Row>
@@ -74,6 +76,11 @@ export default {
     },
     props: {
         departments: Object,
+    },
+    methods: {
+        destroy(id) {
+            this.$inertia.delete(route('departments.destroy', id));
+        }
     }
 }
 </script>
