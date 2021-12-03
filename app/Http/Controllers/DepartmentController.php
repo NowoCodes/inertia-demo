@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Department;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\DepartmentRequest;
 
 class DepartmentController extends Controller
 {
@@ -23,15 +24,9 @@ class DepartmentController extends Controller
         return inertia('Departments/Create');
     }
 
-    public function store(Request $request)
+    public function store(DepartmentRequest $request)
     {
-        Department::create(
-            Request::validate([
-                'name' => ['required', 'min:5', 'max:50'],
-                'email' => ['nullable', 'email', 'max:50'],
-                'phone' => ['nullable', 'max:50'],
-            ])
-        );
+        Department::create($request->validated());
 
         return Redirect::route('departments.index');
     }
