@@ -28,7 +28,7 @@ class DepartmentController extends Controller
     {
         Department::create($request->validated());
 
-        return Redirect::route('departments.index');
+        return Redirect::route('departments.index')->with('success', 'Department Created Successfully');
     }
 
     public function show(Department $department)
