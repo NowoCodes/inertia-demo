@@ -12,8 +12,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                 <div class="lg:w-3/3 flex justify-end">
-                    <AnchorLink :href="route('departments.create')"
-                                mode="add">
+                    <AnchorLink :href="route('departments.create')" mode="add">
                         Create Department
                     </AnchorLink>
                 </div>
@@ -32,7 +31,12 @@
                                 <Cell>{{ d.name }}</Cell>
                                 <Cell>{{ d.email }}</Cell>
                                 <Cell>{{ d.phone }}</Cell>
-                                <Cell></Cell>
+                                <Cell>
+                                    <Link :href="route('departments.edit', d.id)">Edit</Link>
+                                    <AnchorLink :href="route('departments.edit', d.id)" mode="edit">
+                                        Edit
+                                    </AnchorLink>
+                                </Cell>
                             </Row>
                         </template>
                     </Table>
@@ -48,7 +52,7 @@
 
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import Table from "@/Components/Table/Table";
 import Heading from "@/Components/Table/Heading";
 import Row from "@/Components/Table/Row";
@@ -66,6 +70,7 @@ export default {
         Table,
         BreezeAuthenticatedLayout,
         Head,
+        Link,
     },
     props: {
         departments: Object,
