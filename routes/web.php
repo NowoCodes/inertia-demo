@@ -3,6 +3,7 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 
 /*
@@ -35,6 +36,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::resource('departments', DepartmentController::class);
-
-});;
+    Route::resource('employees', EmployeeController::class);
+});
 require __DIR__ . '/auth.php';
