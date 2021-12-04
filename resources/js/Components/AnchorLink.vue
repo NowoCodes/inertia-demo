@@ -1,12 +1,12 @@
 <template>
     <Link v-if="href" :class="classes"
           :href="href"
-          class="flex-shrink-0 text-white border-0 py-2 px-8 focus:outline-none rounded text-lg mt-10 sm:mt-0"
+          class="flex-shrink-0 text-white border-0 py-2 px-3 focus:outline-none rounded text-lg mt-10 sm:mt-0"
     >
         <slot />
     </Link>
     <button v-else :class="classes"
-            class="flex-shrink-0 text-white border-0 py-2 px-8 focus:outline-none rounded text-lg mt-10 sm:mt-0"
+            class="flex-shrink-0 text-white border-0 py-2 px-3 focus:outline-none rounded text-lg mt-10 sm:mt-0"
     >
         <slot />
     </button>
