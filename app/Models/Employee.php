@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @method static paginate(int $int)
+ * @method static create(array $validated)
+ * @method static latest()
  */
 class Employee extends Model
 {

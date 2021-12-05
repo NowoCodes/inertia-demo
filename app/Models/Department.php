@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * @method static orderBy(string $string)
  * @method static create(array $all)
+ * @method static get()
  */
 class Department extends Model
 {

@@ -32,7 +32,7 @@
                                 <Cell>{{ e.name }}</Cell>
                                 <Cell>{{ e.email }}</Cell>
                                 <Cell>
-                                    <AnchorLink :href="route('departments.edit', e.id)" mode="edit">
+                                    <AnchorLink :href="route('employees.edit', e.id)" mode="edit">
                                         Edit
                                     </AnchorLink>
                                     <AnchorLink class="ml-3" mode="delete" @click="destroy(e.id)">
