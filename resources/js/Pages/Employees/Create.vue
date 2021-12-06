@@ -19,23 +19,6 @@
                         </div>
 
                         <form @submit.prevent="submit">
-                            <!--                        phone-->
-                            <div class="mb-4">
-                                <Label for="department_id" value="Department"></Label>
-                                <!--                                <select id="department_id" v-model="form.department_id" class="-->
-                                <!--                                        focus:ring focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-1/2">-->
-                                <!--                                    <option value="">Select</option>-->
-                                <!--                                    <option v-for="d in department" :key="d.id" :value="d.id">-->
-                                <!--                                        {{ d.name }}-->
-                                <!--                                    </option>-->
-                                <!--                                </select>-->
-                                <Select id="department_id"
-                                        :error="form.errors.department_id" class="mt-1 block w-1/2"
-                                        options="department" model-value="form.department_id"
-                                ></Select>
-                                <InputError :message="form.errors.department_id"></InputError>
-                            </div>
-
                             <!--                        name -->
                             <div class="mb-4">
                                 <Label for="name" value="Name"></Label>
@@ -51,6 +34,16 @@
                                 <Input id="email" v-model="form.email" :error="form.errors.email"
                                        class="mt-1 block w-1/2" type="email"></Input>
                                 <InputError :message="form.errors.email"></InputError>
+                            </div>
+
+                            <!--                        department-->
+                            <div class="mb-4">
+                                <Label for="department_id" value="Department"></Label>
+                                <Select id="department_id" v-model="form.department_id"
+                                        :error="form.errors.department_id"
+                                        :options="departments" class="mt-1 block w-1/2"
+                                ></Select>
+                                <InputError :message="form.errors.department_id"></InputError>
                             </div>
 
                             <!--                        submit-->
@@ -92,13 +85,13 @@ export default {
         Link,
     },
     props: {
-        department: Object,
+        departments: Object,
     },
     setup() {
         const form = useForm({
+            email: null,
             department_id: null,
             name: null,
-            email: null,
         })
 
         return {form}

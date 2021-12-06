@@ -12,16 +12,32 @@ class EmployeeController extends Controller
     public function index()
     {
         return inertia('Employees/Index', [
-            'employees' => Employee::latest()->with('department')->paginate(10),
+            'employees' => Employee::orderBy('id', 'DESC')
+                ->with('department')
+                ->paginate(10)
+                ->through(function ($employee) {
+                    return [
+                        'id' => $employee->id,
+                        'name' => $employee->name,
+                        'email' => $employee->email,
+                        'department' => $employee->department->name ?? null,
+                    ];
+                }),
         ]);
     }
 
     public function create()
     {
-        $department = Department::get();
+        $departments = Department::orderBy('name')->get()
+            ->transform(function ($d) {
+                return [
+                    'id' => $d->id,
+                    'label' => $d->name,
+                ];
+            });
 
         return inertia('Employees/Create', [
-            'department' => $department,
+            'departments' => $departments,
         ]);
     }
 
@@ -46,6 +62,13 @@ class EmployeeController extends Controller
                 'name' => $employee->name,
                 'email' => $employee->email,
             ],
+            'departments' => Department::orderBy('name')->get()
+                ->transform(function ($d) {
+                    return [
+                        'id' => $d->id,
+                        'label' => $d->name,
+                    ];
+                }),
         ]);
     }
 

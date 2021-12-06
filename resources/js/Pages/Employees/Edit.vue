@@ -19,13 +19,6 @@
                         </div>
 
                         <form @submit.prevent="submit">
-                            <!--                        department-->
-                            <div class="mb-4">
-                                <Label for="phone" value="Phone"></Label>
-                                <Select options="employee" class="mt-1 block w-1/2"></Select>
-                                <InputError :message="form.errors.phone"></InputError>
-                            </div>
-
                             <!--                        name -->
                             <div class="mb-4">
                                 <Label for="name" value="Name"></Label>
@@ -41,6 +34,16 @@
                                 <Input id="email" v-model="form.email" :error="form.errors.email"
                                        class="mt-1 block w-1/2" type="email"></Input>
                                 <InputError :message="form.errors.email"></InputError>
+                            </div>
+
+                            <!--                        department-->
+                            <div class="mb-4">
+                                <Label for="department_id" value="Department"></Label>
+                                <Select id="department_id" v-model="form.department_id"
+                                        :error="form.errors.department_id"
+                                        :options="departments" class="mt-1 block w-1/2"
+                                ></Select>
+                                <InputError :message="form.errors.department_id"></InputError>
                             </div>
 
                             <!--                        submit-->
@@ -83,15 +86,16 @@ export default {
     },
     setup(props) {
         const form = useForm({
-            department_id: props.employee.department_id,
             name: props.employee.name,
             email: props.employee.email,
+            department_id: props.employee.department_id,
         })
 
         return {form}
     },
     props: {
         employee: Object,
+        departments: Object,
     },
     methods: {
         submit() {

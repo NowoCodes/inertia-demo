@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @method static paginate(int $int)
  * @method static create(array $validated)
  * @method static latest()
+ * @method static orderBy(string $string, string $string1)
  */
 class Employee extends Model
 {

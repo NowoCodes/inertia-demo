@@ -28,7 +28,7 @@
 
                         <template #body>
                             <Row v-for="e in employees.data" :key="e.id">
-                                <Cell>{{ e.department.name }}</Cell>
+                                <Cell>{{ e.department }}</Cell>
                                 <Cell>{{ e.name }}</Cell>
                                 <Cell>{{ e.email }}</Cell>
                                 <Cell>
