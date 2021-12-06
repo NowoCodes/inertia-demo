@@ -40,6 +40,9 @@
                                     <AnchorLink class="ml-3" mode="delete" @click="destroy(d.id)">
                                         Delete
                                     </AnchorLink>
+                                    <AnchorLink class="ml-3" mode="view" @click="employees(d.id)">
+                                        View
+                                    </AnchorLink>
                                 </Cell>
                             </Row>
                         </template>
@@ -82,6 +85,13 @@ export default {
     methods: {
         destroy(id) {
             this.$inertia.delete(route('departments.destroy', id));
+        },
+        employees(id) {
+            this.$inertia.visit(route('employees.index'), {
+                method: 'get',
+                data: {department_id: id}
+            });
+            // this.$inertia.get(route('employees.index'), {department_id: id});
         }
     }
 }
