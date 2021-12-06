@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Department;
 use App\Http\Requests\EmployeeRequest;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class EmployeeController extends Controller
@@ -12,10 +13,12 @@ class EmployeeController extends Controller
     public function index()
     {
         return inertia('Employees/Index', [
+            'department_id' => Request::get('department_id'),
             'employees' => Employee::orderBy('id', 'DESC')
                 ->with('department')
-                ->paginate(10)
-                ->through(function ($employee) {
+                ->whereDepartment(Request::get('department_id'))
+                ->get()
+                ->transform(function ($employee) {
                     return [
                         'id' => $employee->id,
                         'name' => $employee->name,
@@ -23,6 +26,16 @@ class EmployeeController extends Controller
                         'department' => $employee->department->name ?? null,
                     ];
                 }),
+
+            'departments' => function () {
+                return Department::orderBy('name')->get()
+                    ->transform(function ($d) {
+                        return [
+                            'id' => $d->id,
+                            'label' => $d->name,
+                        ];
+                    });
+            },
         ]);
     }
 

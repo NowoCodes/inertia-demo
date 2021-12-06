@@ -18,8 +18,15 @@ class Employee extends Model
 
     protected $guarded = [];
 
-    public function department():  BelongsTo
+    public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class);
+    }
+
+    public function scopeWhereDepartment($query, $department_id): void
+    {
+        $query->when(!is_null($department_id), function ($query) use ($department_id) {
+            $query->where('department_id', $department_id);
+        });
     }
 }

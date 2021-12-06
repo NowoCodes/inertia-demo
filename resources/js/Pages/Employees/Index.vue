@@ -11,7 +11,12 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="lg:w-3/3 flex justify-end">
+                <div class="lg:w-3/3 flex justify-between">
+                    <Select id="department_id" v-model="department_id"
+                            :options="departments" class="mt-1 block w-1/3"
+                            @change="getEmployees(department_id)"
+                    ></Select>
+
                     <AnchorLink :href="route('employees.create')" mode="add">
                         Create Employee
                     </AnchorLink>
@@ -28,7 +33,7 @@
                         </template>
 
                         <template #body>
-                            <Row v-for="e in employees.data" :key="e.id">
+                            <Row v-for="e in employees" :key="e.id">
                                 <Cell>{{ e.id }}</Cell>
                                 <Cell>{{ e.name }}</Cell>
                                 <Cell>{{ e.department }}</Cell>
@@ -44,10 +49,6 @@
                             </Row>
                         </template>
                     </Table>
-
-                    <div class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between">
-                        <Pagination :links="employees.links" />
-                    </div>
                 </div>
             </div>
         </div>
@@ -61,13 +62,13 @@ import Table from "@/Components/Table/Table";
 import Heading from "@/Components/Table/Heading";
 import Row from "@/Components/Table/Row";
 import Cell from "@/Components/Table/Cell";
-import Pagination from "@/Components/Pagination";
 import AnchorLink from "@/Components/AnchorLink";
+import Select from "@/Components/Select";
 
 export default {
     components: {
+        Select,
         AnchorLink,
-        Pagination,
         Cell,
         Row,
         Heading,
@@ -78,10 +79,15 @@ export default {
     },
     props: {
         employees: Object,
+        departments: Object,
+        department_id: [String, Number],
     },
     methods: {
         destroy(id) {
             this.$inertia.delete(route('employees.destroy', id));
+        },
+        getEmployees(department_id) {
+            this.$inertia.get(route('employees.index'), {department_id: department_id}, {only: ['employees', 'department_id']})
         }
     }
 }
