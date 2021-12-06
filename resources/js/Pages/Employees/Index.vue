@@ -20,16 +20,18 @@
                 <div class="inline-block overflow-hidden min-w-full rounded-lg shadow mt-8">
                     <Table>
                         <template #head>
-                            <Heading>Department</Heading>
+                            <Heading>ID</Heading>
                             <Heading>Name</Heading>
+                            <Heading>Department</Heading>
                             <Heading>Email</Heading>
                             <Heading>Actions</Heading>
                         </template>
 
                         <template #body>
                             <Row v-for="e in employees.data" :key="e.id">
-                                <Cell>{{ e.department }}</Cell>
+                                <Cell>{{ e.id }}</Cell>
                                 <Cell>{{ e.name }}</Cell>
+                                <Cell>{{ e.department }}</Cell>
                                 <Cell>{{ e.email }}</Cell>
                                 <Cell>
                                     <AnchorLink :href="route('employees.edit', e.id)" mode="edit">

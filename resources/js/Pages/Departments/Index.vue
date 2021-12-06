@@ -20,6 +20,7 @@
                 <div class="inline-block overflow-hidden min-w-full rounded-lg shadow mt-8">
                     <Table>
                         <template #head>
+                            <Heading>ID</Heading>
                             <Heading>Name</Heading>
                             <Heading>Email</Heading>
                             <Heading>Phone</Heading>
@@ -28,6 +29,7 @@
 
                         <template #body>
                             <Row v-for="d in departments.data" :key="d.id">
+                                <Cell>{{ d.id }}</Cell>
                                 <Cell>{{ d.name }}</Cell>
                                 <Cell>{{ d.email }}</Cell>
                                 <Cell>{{ d.phone }}</Cell>
