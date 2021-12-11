@@ -84,7 +84,10 @@ export default {
     },
     methods: {
         destroy(id) {
-            this.$inertia.delete(route('employees.destroy', id), {preserveScroll: true});
+            this.$inertia.delete(route('employees.destroy', id), {
+                preserveScroll: true,
+                preserveState: false,
+            });
         },
         getEmployees(department_id) {
             this.$inertia.get(route('employees.index'), {department_id: department_id}, {only: ['employees', 'department_id']})
