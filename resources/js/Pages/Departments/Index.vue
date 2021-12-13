@@ -12,7 +12,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                 <div class="lg:w-3/3 flex justify-end">
-                    <AnchorLink :href="route('departments.create')" mode="add">
+                    <AnchorLink v-if="$page.props.can" :href="route('departments.create')" mode="add">
                         Create Department
                     </AnchorLink>
                 </div>
@@ -34,10 +34,10 @@
                                 <Cell>{{ d.email }}</Cell>
                                 <Cell>{{ d.phone }}</Cell>
                                 <Cell>
-                                    <AnchorLink :href="route('departments.edit', d.id)" mode="edit">
+                                    <AnchorLink v-if="d.can.edit" :href="route('departments.edit', d.id)" mode="edit">
                                         Edit
                                     </AnchorLink>
-                                    <AnchorLink class="ml-3" mode="delete" @click="destroy(d.id)">
+                                    <AnchorLink v-if="d.can.delete" class="ml-3" mode="delete" @click="destroy(d.id)">
                                         Delete
                                     </AnchorLink>
                                     <AnchorLink class="ml-3" mode="view" @click="employees(d.id)">
