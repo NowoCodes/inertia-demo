@@ -20,9 +20,15 @@
                 <div class="inline-block overflow-hidden min-w-full rounded-lg shadow mt-8">
                     <Table>
                         <template #head>
-                            <Heading>ID</Heading>
-                            <Heading>Name</Heading>
-                            <Heading>Email</Heading>
+                            <Heading :sort=sort :sortHeader=true :sortby=sortby field="id" @click="sortColumn('id')">
+                                ID
+                            </Heading>
+                            <Heading :sort=sort :sortHeader=true :sortby=sortby field="name"
+                                     @click="sortColumn('name')">Name
+                            </Heading>
+                            <Heading :sort=sort :sortHeader=true :sortby=sortby field="email"
+                                     @click="sortColumn('email')">Email
+                            </Heading>
                             <Heading>Phone</Heading>
                             <Heading>Actions</Heading>
                         </template>
@@ -81,6 +87,8 @@ export default {
     },
     props: {
         departments: Object,
+        sortby: String,
+        sort: String
     },
     methods: {
         destroy(id) {
@@ -95,6 +103,22 @@ export default {
                 data: {department_id: id}
             });
             // this.$inertia.get(route('employees.index'), {department_id: id});
+        },
+        sortColumn(col) {
+            // reverse sort on column select
+            let sort = this.sort;
+            if (col === this.sortby) {
+                if (this.sort === 'ASC') {
+                    sort = 'DESC';
+                } else {
+                    sort = 'ASC';
+                }
+            }
+            this.$inertia.get(route('departments.index'), {
+                sortby: col,
+                sort: sort,
+                page: this.departments.current_page
+            })
         }
     }
 }
