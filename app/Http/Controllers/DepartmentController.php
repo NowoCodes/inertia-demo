@@ -22,13 +22,13 @@ class DepartmentController extends Controller
             $sortby = 'id';
         }
 
-        $sort = Request::get('sort', 'ASC');
-        if (!in_array($sort, ['ASC', 'DESC'])) {
-            $sort = 'ASC';
+        $sort = Request::get('sort', 'asc');
+        if (!in_array($sort, ['asc', 'desc'])) {
+            $sort = 'asc';
         }
 
         return Inertia::render('Departments/Index', [
-            'departments' => Department::orderBy($sortby, ($sort === 'ASC') ? 'ASC' : 'DESC')->paginate(10)
+            'departments' => Department::orderBy($sortby, ($sort === 'asc') ? 'ASC' : 'DESC')->paginate(10)
                 ->through(function ($department) {
                     return [
                         'id' => $department->id,

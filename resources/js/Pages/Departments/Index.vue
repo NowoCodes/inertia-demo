@@ -108,10 +108,10 @@ export default {
             // reverse sort on column select
             let sort = this.sort;
             if (col === this.sortby) {
-                if (this.sort === 'ASC') {
-                    sort = 'DESC';
+                if (this.sort === 'asc') {
+                    sort = 'desc';
                 } else {
-                    sort = 'ASC';
+                    sort = 'asc';
                 }
             }
             this.$inertia.get(route('departments.index'), {

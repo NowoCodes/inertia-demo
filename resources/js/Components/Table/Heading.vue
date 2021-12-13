@@ -4,7 +4,7 @@
         <slot />
         <span v-if="sortHeader" :class="{'float-right': sortHeader}">
           <span v-if="sortby === field">
-            <span v-if="sort === 'DESC'">
+            <span v-if="sort === 'desc'">
               <svg class="w-4 h-4 ml-2"
                    fill="currentColor"
                    viewBox="0 0 20 20"
