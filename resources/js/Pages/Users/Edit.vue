@@ -48,6 +48,27 @@
                                 <InputError :message="form.errors.email"></InputError>
                             </div>
 
+                            <!--                        image-->
+                            <div class="mb-4">
+                                <Label for="image" value="Image"></Label>
+                                <input ref="photo" class="hidden" type="file" @change="updatePhotoPreview">
+
+                                <div v-show="!photoPreview && user.image" class="mt-2">
+                                    <img :src="currentImage()" class="rounded-full h-20 w-20 object-cover">
+                                </div>
+
+                                <div v-show="photoPreview" class="mt-2">
+                                  <span :style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' +
+                                      photoPreview + '\');'" class="block rounded-full w-20 h-20"></span>
+                                </div>
+
+                                <InputError :message="form.errors.image"></InputError>
+
+                                <Button class="mt-2 mr-2" type="button" @click.prevent="selectNewPhoto">Select a New
+                                    Photo
+                                </Button>
+                            </div>
+
                             <!--                        submit-->
                             <div class="flex justify-end gap-2">
                                 <ResetButton @click="resetForm">Reset</ResetButton>
@@ -83,8 +104,10 @@ export default {
     },
     setup(props) {
         const form = useForm({
+            _method: 'PUT',
             name: props.user.name,
             email: props.user.email,
+            image: props.user.image,
         })
 
         return {form}
@@ -92,13 +115,36 @@ export default {
     props: {
         user: Object,
     },
+    data() {
+        return {
+            photoPreview: null,
+        }
+    },
     methods: {
         submit() {
-            this.form.put(route('update-profile', this.user.id));
+            if (this.$refs.photo) {
+                this.form.image = this.$refs.photo.files[0];
+            }
+            this.form.post(route('update-profile', this.user.id), {
+                preserveScroll: (page) => Object.keys(page.props.errors).length,
+            });
         },
         resetForm() {
             this.form.clearErrors();
             this.form.reset();
+        },
+        currentImage() {
+            return '/storage/' + this.user.image;
+        },
+        selectNewPhoto() {
+            this.$refs.photo.click();
+        },
+        updatePhotoPreview() {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                this.photoPreview = e.target.result;
+            }
+            reader.readAsDataURL(this.$refs.photo.files[0]);
         },
     }
 }

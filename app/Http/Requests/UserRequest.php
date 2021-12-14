@@ -27,6 +27,7 @@ class UserRequest extends FormRequest
         return [
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users')->ignore(auth()->id())],
+            'image' => ['sometimes', 'nullable', 'mimes:jpg,jpeg,png'],
         ];
     }
 }

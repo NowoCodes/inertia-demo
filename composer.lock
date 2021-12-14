@@ -1,20 +1,20 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "0828d7fc65c5b88d3a08bfc430ad0fda",
-    "packages": [
-        {
-            "name": "asm89/stack-cors",
-            "version": "v2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/asm89/stack-cors.git",
-                "reference": "9cb795bf30988e8c96dd3c40623c48a877bc6714"
-            },
-            "dist": {
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "c4f7111e91c999905c7d2804a667a861",
+  "packages": [
+    {
+      "name": "asm89/stack-cors",
+      "version": "v2.0.3",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/asm89/stack-cors.git",
+        "reference": "9cb795bf30988e8c96dd3c40623c48a877bc6714"
+      },
+      "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/asm89/stack-cors/zipball/9cb795bf30988e8c96dd3c40623c48a877bc6714",
                 "reference": "9cb795bf30988e8c96dd3c40623c48a877bc6714",
@@ -1019,25 +1019,109 @@
                 "issues": "https://github.com/inertiajs/inertia-laravel/issues",
                 "source": "https://github.com/inertiajs/inertia-laravel/tree/v0.4.5"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/reinink",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-10-27T09:37:59+00:00"
+          "funding": [
+            {
+              "url": "https://github.com/reinink",
+              "type": "github"
+            }
+          ],
+          "time": "2021-10-27T09:37:59+00:00"
+        },
+    {
+      "name": "intervention/image",
+      "version": "2.7.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/Intervention/image.git",
+        "reference": "9a8cc99d30415ec0b3f7649e1647d03a55698545"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/Intervention/image/zipball/9a8cc99d30415ec0b3f7649e1647d03a55698545",
+        "reference": "9a8cc99d30415ec0b3f7649e1647d03a55698545",
+        "shasum": ""
+      },
+      "require": {
+        "ext-fileinfo": "*",
+        "guzzlehttp/psr7": "~1.1 || ^2.0",
+        "php": ">=5.4.0"
+      },
+      "require-dev": {
+        "mockery/mockery": "~0.9.2",
+        "phpunit/phpunit": "^4.8 || ^5.7 || ^7.5.15"
+      },
+      "suggest": {
+        "ext-gd": "to use GD library based image processing.",
+        "ext-imagick": "to use Imagick based image processing.",
+        "intervention/imagecache": "Caching extension for the Intervention Image library"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.4-dev"
+        },
+        "laravel": {
+          "providers": [
+            "Intervention\\Image\\ImageServiceProvider"
+          ],
+          "aliases": {
+            "Image": "Intervention\\Image\\Facades\\Image"
+          }
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Intervention\\Image\\": "src/Intervention/Image"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Oliver Vogel",
+          "email": "oliver@olivervogel.com",
+          "homepage": "http://olivervogel.com/"
+        }
+      ],
+      "description": "Image handling and manipulation library with support for Laravel integration",
+      "homepage": "http://image.intervention.io/",
+      "keywords": [
+        "gd",
+        "image",
+        "imagick",
+        "laravel",
+        "thumbnail",
+        "watermark"
+      ],
+      "support": {
+        "issues": "https://github.com/Intervention/image/issues",
+        "source": "https://github.com/Intervention/image/tree/2.7.0"
+      },
+      "funding": [
+        {
+          "url": "https://www.paypal.me/interventionphp",
+          "type": "custom"
         },
         {
-            "name": "laravel/framework",
-            "version": "v8.73.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/framework.git",
-                "reference": "0e1c63315eeaee5920552ff042bd820bb4014533"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0e1c63315eeaee5920552ff042bd820bb4014533",
+          "url": "https://github.com/Intervention",
+          "type": "github"
+        }
+      ],
+      "time": "2021-10-03T14:17:12+00:00"
+    },
+    {
+      "name": "laravel/framework",
+      "version": "v8.73.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/laravel/framework.git",
+        "reference": "0e1c63315eeaee5920552ff042bd820bb4014533"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/laravel/framework/zipball/0e1c63315eeaee5920552ff042bd820bb4014533",
                 "reference": "0e1c63315eeaee5920552ff042bd820bb4014533",
                 "shasum": ""
             },
