@@ -46,6 +46,10 @@
                                     </template>
 
                                     <template #content>
+                                        <BreezeDropdownLink :href="route('edit-profile')">
+                                            Profile
+                                        </BreezeDropdownLink>
+
                                         <BreezeDropdownLink :href="route('logout')" method="post" as="button">
                                             Log Out
                                         </BreezeDropdownLink>
@@ -90,6 +94,10 @@
                         </div>
 
                         <div class="mt-3 space-y-1">
+                            <BreezeResponsiveNavLink :href="route('edit-profile')">
+                                Profile
+                            </BreezeResponsiveNavLink>
+
                             <BreezeResponsiveNavLink :href="route('logout')" method="post" as="button">
                                 Log Out
                             </BreezeResponsiveNavLink>
