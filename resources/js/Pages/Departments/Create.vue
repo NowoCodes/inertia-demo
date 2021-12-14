@@ -9,6 +9,9 @@
         </template>
 
         <div class="py-12">
+            <!--            <div class="m-64 p-64">-->
+            <!--                Some dummy text-->
+            <!--            </div>-->
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
@@ -91,7 +94,9 @@ export default {
     },
     methods: {
         submit() {
-            this.form.post(route('departments.store'));
+            this.form.post(route('departments.store'), {
+                // preserveScroll: (page) => Object.keys(page.props.errors).length,
+            });
         },
         resetForm() {
             this.form.clearErrors();
